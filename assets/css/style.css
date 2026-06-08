@@ -83,6 +83,12 @@ img, svg { max-width: 100%; }
   letter-spacing: 0;
 }
 
+.brand-mark svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
 .nav-toggle {
   border: 1px solid var(--border);
   background: #fff;

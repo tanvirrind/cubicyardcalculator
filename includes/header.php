@@ -29,7 +29,12 @@ $root = $page['root'] ?? '';
   <header class="site-header">
     <nav class="site-nav" aria-label="Main navigation">
       <a class="brand" href="<?= $root ?>" aria-label="Cubic Yard Calculator home">
-        <span class="brand-mark" aria-hidden="true">CY</span>
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" focusable="false">
+            <path d="M16 24 32 15l16 9v18l-16 9-16-9z" fill="#fff"/>
+            <path d="M16 24 32 33l16-9M32 33v18" fill="none" stroke="#2e7d32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
         <span>Cubic Yard Calculator</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
