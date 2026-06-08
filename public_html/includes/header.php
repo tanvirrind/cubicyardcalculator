@@ -28,13 +28,19 @@ $root = $page['root'] ?? '';
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <nav class="site-nav" aria-label="Main navigation">
-      <a class="brand" href="<?= $root ?>">Cubic Yard Calculator</a>
+      <a class="brand" href="<?= $root ?>" aria-label="Cubic Yard Calculator home">
+        <span class="brand-mark" aria-hidden="true">CY</span>
+        <span>Cubic Yard Calculator</span>
+      </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
       <div class="nav-links" id="navLinks">
+        <a href="<?= $root ?>">Home</a>
+        <a href="<?= $root ?>#how-to-use">How to Use</a>
+        <a href="<?= $root ?>#materials">Materials</a>
+        <a href="<?= $root ?>#faq">FAQ</a>
         <a href="<?= $root ?>concrete-calculator/">Concrete</a>
         <a href="<?= $root ?>gravel-calculator/">Gravel</a>
-        <a href="<?= $root ?>mulch-calculator/">Mulch</a>
-        <a href="<?= $root ?>dirt-calculator/">Dirt</a>
+        <a href="<?= $root ?>contact/">Contact</a>
       </div>
     </nav>
   </header>

@@ -2,6 +2,19 @@
   <footer class="site-footer">
     <div class="footer-grid">
       <section>
+        <h2>Cubic Yard Calculator</h2>
+        <p class="footer-about">Fast material estimates for concrete, gravel, mulch, dirt, sand, and other bulk projects.</p>
+      </section>
+      <section>
+        <h2>Quick Links</h2>
+        <nav class="footer-links" aria-label="Quick links">
+          <a href="<?= $root ?>#how-to-use">How to Use</a>
+          <a href="<?= $root ?>#materials">Materials</a>
+          <a href="<?= $root ?>#faq">FAQ</a>
+          <a href="<?= $root ?>about/">About</a>
+        </nav>
+      </section>
+      <section>
         <h2>Related Calculators</h2>
         <nav class="footer-links" aria-label="Related calculators">
           <a href="<?= $root ?>concrete-calculator/">Concrete Cubic Yard Calculator</a>
@@ -14,9 +27,8 @@
         </nav>
       </section>
       <section>
-        <h2>Site</h2>
+        <h2>Legal</h2>
         <nav class="footer-links" aria-label="Site pages">
-          <a href="<?= $root ?>about/">About</a>
           <a href="<?= $root ?>contact/">Contact</a>
           <a href="<?= $root ?>privacy-policy/">Privacy Policy</a>
         </nav>

@@ -30,6 +30,10 @@ include __DIR__ . '/includes/header.php';
   <p class="eyebrow">Free material volume tool</p>
   <h1>Cubic Yard Calculator</h1>
   <p class="lead">Calculate concrete, gravel, mulch, dirt, sand, and rock in cubic yards. Enter your dimensions to get volume, weight, cost, and a 10 percent overage recommendation.</p>
+  <div class="hero-actions">
+    <a class="button button-hero-primary" href="#toolTitle">Calculate Cubic Yards</a>
+    <a class="button button-hero-secondary" href="#how-to-use">How to Use</a>
+  </div>
 </section>
 
 <div id="ad-top" class="ad-slot" aria-hidden="true"></div>
@@ -96,7 +100,7 @@ include __DIR__ . '/includes/header.php';
 
 <div id="ad-mid" class="ad-slot" aria-hidden="true"></div>
 
-<section class="content-section">
+<section class="content-section" id="how-to-use">
   <h2>How to Use</h2>
   <ol class="steps">
     <li>Enter the length and width of the project area.</li>
@@ -105,7 +109,7 @@ include __DIR__ . '/includes/header.php';
   </ol>
 </section>
 
-<section class="content-section cube-wrap">
+<section class="content-section cube-wrap" id="what-is-a-cubic-yard">
   <svg viewBox="0 0 220 180" role="img" aria-label="A cube showing one cubic yard as 3 feet by 3 feet by 3 feet">
     <polygon points="55,55 125,20 195,55 125,90" fill="#f1f8e9" stroke="#2e7d32" stroke-width="3"/>
     <polygon points="55,55 125,90 125,160 55,125" fill="#ffffff" stroke="#2e7d32" stroke-width="3"/>
@@ -118,12 +122,12 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<section class="content-section">
+<section class="content-section" id="formula">
   <h2>How to Calculate Manually</h2>
   <p>Use this formula: length in feet x width in feet x depth in feet divided by 27. For a 12 ft by 10 ft area at 4 inches deep, convert 4 inches to 0.333 feet. The math is 12 x 10 x 0.333 = 40 cubic feet, then 40 / 27 = 1.48 cubic yards.</p>
 </section>
 
-<section class="content-section">
+<section class="content-section" id="materials">
   <h2>Material Weight Reference Table</h2>
   <div class="table-wrap">
     <table>
@@ -141,7 +145,17 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<section class="content-section">
+<section class="content-section use-cases" id="use-cases">
+  <h2>Common Use Cases</h2>
+  <div class="link-grid">
+    <a href="concrete-calculator/"><strong>Concrete Projects</strong><span>Driveways, patios, slabs, footings, and sidewalks.</span></a>
+    <a href="mulch-calculator/"><strong>Landscaping</strong><span>Garden beds, borders, tree rings, and refresh layers.</span></a>
+    <a href="gravel-calculator/"><strong>Gravel and Stone</strong><span>Driveways, paths, drainage areas, and decorative rock.</span></a>
+    <a href="dirt-calculator/"><strong>Soil and Fill</strong><span>Topsoil, fill dirt, raised beds, grading, and backfill.</span></a>
+  </div>
+</section>
+
+<section class="content-section" id="faq">
   <h2>FAQ</h2>
   <?php foreach ($faqs as $i => $faq): ?>
     <?php if ($i === 6): ?><div id="ad-faq" class="ad-slot" aria-hidden="true"></div><?php endif; ?>
