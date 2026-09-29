@@ -121,8 +121,8 @@
       overage: round(yards * 1.10, 2),
       material: materialLabel(material),
       copy: copyText,
-      bags60: Math.ceil(yards * 45).toLocaleString('en-US'),
-      bags80: Math.ceil(yards * 34).toLocaleString('en-US'),
+      bags60: Math.ceil(yards * 60).toLocaleString('en-US'),
+      bags80: Math.ceil(yards * 45).toLocaleString('en-US'),
       bags2cf: Math.ceil((yards * 27) / 2).toLocaleString('en-US'),
       coverage: round((lFeet * wFeet), 2),
       trucks: round(yards / 2, 2)

@@ -769,8 +769,9 @@ tbody tr:nth-child(even) td {
   align-items: start;
 }
 
-.footer-grid h2 {
+.footer-grid .footer-heading {
   color: #fff;
+  font-weight: 700;
   font-size: 1rem;
   margin: 0 0 10px;
   text-align: left;
@@ -929,4 +930,56 @@ tbody tr:nth-child(even) td {
   section.content-section:last-of-type .link-grid {
     max-width: 680px;
   }
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 14px 20px 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.breadcrumbs a {
+  color: var(--primary);
+  text-decoration: none;
+}
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+.crumb-sep {
+  margin: 0 8px;
+  color: var(--muted);
+}
+
+/* Quick-answer box (featured-snippet targeting) */
+.answer-box {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin: 26px auto;
+  max-width: var(--max);
+}
+.answer-box p {
+  margin: 0.4em 0;
+}
+.answer-box strong.lead-answer {
+  font-size: 1.08rem;
+}
+
+.form-success {
+  background: #e8f5e9;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  padding: 14px 18px;
+  color: #1b5e20;
+}
+.form-error {
+  background: #fdecea;
+  border: 1px solid #c62828;
+  border-radius: 8px;
+  padding: 14px 18px;
+  color: #b71c1c;
 }
