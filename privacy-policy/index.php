@@ -5,6 +5,7 @@ $page = [
   'description' => 'Read the Cubic Yard Calculator privacy policy covering cookies, Google AdSense, analytics, contact form data and site usage.',
   'canonical' => 'https://cubicyardcalculator.site/privacy-policy/'
 ];
+$page['breadcrumbs'] = [['Home', 'https://cubicyardcalculator.site/'], ['Privacy Policy', null]];
 include __DIR__ . '/../includes/header.php';
 ?>
 <section class="hero">
