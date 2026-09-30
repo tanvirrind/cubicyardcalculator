@@ -1,0 +1,19 @@
+<?php
+$faqs = [
+  ['How many yards of gravel are in a ton?', 'It depends on density. A planning estimate for common gravel is about 0.71 cubic yards per ton, or about 1.4 tons per cubic yard.'],
+  ['How do I convert gravel from cubic yards to tons?', 'Multiply cubic yards by the gravel weight per cubic yard. The calculator uses an approximate gravel density and should be checked against your supplier.'],
+  ['Does wet gravel weigh more?', 'Yes. Moisture, stone size, and composition can change the actual weight significantly.'],
+  ['Should I use tons or cubic yards when ordering?', 'Use the unit your supplier quotes. Ask for the material density if you need to convert between them.']
+];
+$page = ['root' => '../', 'title' => 'Gravel to Tons Calculator - Convert Yards and Tons', 'description' => 'Convert gravel cubic yards to tons or tons to cubic yards. Includes approximate gravel density, formulas, and ordering guidance.', 'canonical' => 'https://cubicyardcalculator.site/gravel-to-tons-calculator/', 'schema' => ['@context' => 'https://schema.org', '@graph' => [['@type' => 'WebPage', 'name' => 'Gravel to Tons Calculator', 'url' => 'https://cubicyardcalculator.site/gravel-to-tons-calculator/'], ['@type' => 'FAQPage', 'mainEntity' => array_map(fn($faq) => ['@type' => 'Question', 'name' => $faq[0], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq[1]]], $faqs)]]]];
+$page['breadcrumbs'] = [['Home', 'https://cubicyardcalculator.site/'], ['Gravel to Tons Calculator', null]];
+include __DIR__ . '/../includes/header.php';
+?>
+<section class="hero"><p class="eyebrow">Weight and volume conversion</p><h1>Gravel to Tons Calculator</h1><p class="lead">Convert gravel from cubic yards to tons or from tons to cubic yards using an approximate gravel density.</p></section>
+<section class="answer-box"><p><strong class="lead-answer">Important:</strong> Gravel weight varies by stone type, size, and moisture. Use the result as a planning estimate and confirm the supplier's quoted weight.</p></section>
+<section class="content-section"><h2>Convert Gravel Yards and Tons</h2><p>Use the tons converter, select gravel, and choose whether you are entering tons or cubic yards.</p><p><a class="button button-primary" href="../tons-to-cubic-yards-calculator/">Open the Tons Converter</a></p></section>
+<section class="content-section"><h2>Approximate Gravel Conversions</h2><div class="table-wrap"><table><thead><tr><th>Gravel volume</th><th>Approximate weight</th></tr></thead><tbody><tr><td>0.5 cubic yards</td><td>0.70 tons</td></tr><tr><td>1 cubic yard</td><td>1.40 tons</td></tr><tr><td>2 cubic yards</td><td>2.80 tons</td></tr><tr><td>5 cubic yards</td><td>7.00 tons</td></tr><tr><td>10 cubic yards</td><td>14.00 tons</td></tr></tbody></table></div></section>
+<section class="content-section"><h2>Ordering Gravel</h2><ul><li>Measure the project volume before converting to weight.</li><li>Ask whether the supplier's price is per ton or per cubic yard.</li><li>Confirm the stone type and moisture conditions used for the quote.</li><li>Check truck payload limits when ordering large quantities.</li></ul></section>
+<section class="content-section"><h2>FAQ</h2><?php foreach ($faqs as $faq): ?><div class="faq-item"><h3><button class="faq-question" type="button" aria-expanded="false"><?= htmlspecialchars($faq[0], ENT_QUOTES, 'UTF-8') ?><span>+</span></button></h3><div class="faq-answer"><p><?= htmlspecialchars($faq[1], ENT_QUOTES, 'UTF-8') ?></p></div></div><?php endforeach; ?></section>
+<section class="content-section"><h2>Related Gravel Tools</h2><div class="link-grid"><a href="../gravel-calculator/">Gravel calculator</a><a href="../landscape-rock-calculator/">Landscape rock calculator</a><a href="../how-to-calculate-cubic-yards/">How to calculate cubic yards</a></div></section>
+<?php include __DIR__ . '/../includes/footer.php'; ?>

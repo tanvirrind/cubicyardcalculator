@@ -1,0 +1,19 @@
+<?php
+$faqs = [
+  ['How do I calculate fill dirt?', 'Multiply length by width by depth in feet, then divide by 27 to get cubic yards.'],
+  ['How much does a cubic yard of fill dirt cover?', 'Coverage depends on depth. One cubic yard covers 108 square feet at 3 inches deep, or 81 square feet at 4 inches deep.'],
+  ['Should I add extra fill dirt?', 'Add about 10 percent when the area may settle, compact, or have uneven ground.'],
+  ['What is the difference between fill dirt and topsoil?', 'Fill dirt is commonly used for grading and raising low areas. Topsoil is screened and nutrient-rich for lawns, gardens, and planting.']
+];
+$page = ['root' => '../', 'title' => 'Fill Dirt Calculator - Calculate Cubic Yards of Fill Dirt', 'description' => 'Calculate how many cubic yards of fill dirt you need for grading, backfill, raised areas and leveling. Includes the fill dirt formula and coverage examples.', 'canonical' => 'https://cubicyardcalculator.site/fill-dirt-calculator/', 'schema' => ['@context' => 'https://schema.org', '@graph' => [['@type' => 'WebPage', 'name' => 'Fill Dirt Calculator', 'url' => 'https://cubicyardcalculator.site/fill-dirt-calculator/'], ['@type' => 'FAQPage', 'mainEntity' => array_map(fn($faq) => ['@type' => 'Question', 'name' => $faq[0], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq[1]]], $faqs)]]]];
+$page['breadcrumbs'] = [['Home', 'https://cubicyardcalculator.site/'], ['Fill Dirt Calculator', null]];
+include __DIR__ . '/../includes/header.php';
+?>
+<section class="hero"><p class="eyebrow">Soil and grading guide</p><h1>Fill Dirt Calculator</h1><p class="lead">Estimate cubic yards of fill dirt for grading, backfill, leveling low spots, building up a site, or filling around a foundation.</p></section>
+<section class="answer-box"><p><strong class="lead-answer">Formula:</strong> length in feet × width in feet × depth in feet ÷ 27 = cubic yards of fill dirt.</p></section>
+<section class="content-section"><h2>Calculate Fill Dirt</h2><p>Use the dirt calculator to enter your project dimensions and select fill dirt. It estimates volume, weight, cost, and a 10 percent overage.</p><p><a class="button button-primary" href="../dirt-calculator/">Open the Dirt Calculator</a></p></section>
+<section class="content-section"><h2>Fill Dirt Coverage by Depth</h2><div class="table-wrap"><table><thead><tr><th>Depth</th><th>Area covered by 1 cubic yard</th><th>Common use</th></tr></thead><tbody><tr><td>3 inches</td><td>108 sq ft</td><td>Light leveling and low spots</td></tr><tr><td>4 inches</td><td>81 sq ft</td><td>General fill and grading</td></tr><tr><td>6 inches</td><td>54 sq ft</td><td>Deeper base and site buildup</td></tr><tr><td>12 inches</td><td>27 sq ft</td><td>Deep fill and raised areas</td></tr></tbody></table></div></section>
+<section class="content-section"><h2>Fill Dirt Planning Tips</h2><ul><li>Measure the average depth across the full area.</li><li>Account for compaction when the soil will be used as a base.</li><li>Confirm whether the supplier sells screened fill, common fill, or structural fill.</li><li>Ask about delivery minimums and truck access before ordering.</li></ul></section>
+<section class="content-section"><h2>FAQ</h2><?php foreach ($faqs as $faq): ?><div class="faq-item"><h3><button class="faq-question" type="button" aria-expanded="false"><?= htmlspecialchars($faq[0], ENT_QUOTES, 'UTF-8') ?><span>+</span></button></h3><div class="faq-answer"><p><?= htmlspecialchars($faq[1], ENT_QUOTES, 'UTF-8') ?></p></div></div><?php endforeach; ?></section>
+<section class="content-section"><h2>Related Soil Tools</h2><div class="link-grid"><a href="../dirt-calculator/">Dirt and topsoil calculator</a><a href="../square-feet-to-cubic-yards-calculator/">Square feet to cubic yards</a><a href="../tons-to-cubic-yards-calculator/">Tons to cubic yards</a></div></section>
+<?php include __DIR__ . '/../includes/footer.php'; ?>

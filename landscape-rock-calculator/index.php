@@ -1,0 +1,19 @@
+<?php
+$faqs = [
+  ['How do I calculate landscape rock?', 'Multiply the landscape area by the planned depth in feet, then divide by 27.'],
+  ['How deep should landscape rock be?', 'Many decorative rock beds use 2 to 3 inches. Driveway and drainage applications may need a deeper base.'],
+  ['How much does landscape rock weigh?', 'Rock density varies. A planning estimate is often around 2,500 to 4,500 pounds per cubic yard depending on the stone.'],
+  ['Should I add overage to landscape rock?', 'Yes. Add about 10 percent for uneven ground, settling, and small measuring differences.']
+];
+$page = ['root' => '../', 'title' => 'Landscape Rock Calculator - Cubic Yards of Rock and Stone', 'description' => 'Calculate cubic yards of landscape rock, decorative stone, and drainage rock using your area and depth. Includes coverage examples and planning tips.', 'canonical' => 'https://cubicyardcalculator.site/landscape-rock-calculator/', 'schema' => ['@context' => 'https://schema.org', '@graph' => [['@type' => 'WebPage', 'name' => 'Landscape Rock Calculator', 'url' => 'https://cubicyardcalculator.site/landscape-rock-calculator/'], ['@type' => 'FAQPage', 'mainEntity' => array_map(fn($faq) => ['@type' => 'Question', 'name' => $faq[0], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq[1]]], $faqs)]]]];
+$page['breadcrumbs'] = [['Home', 'https://cubicyardcalculator.site/'], ['Landscape Rock Calculator', null]];
+include __DIR__ . '/../includes/header.php';
+?>
+<section class="hero"><p class="eyebrow">Stone and rock estimator</p><h1>Landscape Rock Calculator</h1><p class="lead">Estimate the cubic yards of decorative rock, river rock, crushed stone, or drainage rock needed for a landscape bed or project area.</p></section>
+<section class="answer-box"><p><strong class="lead-answer">Formula:</strong> area in square feet × depth in feet ÷ 27 = cubic yards of landscape rock.</p></section>
+<section class="content-section"><h2>Calculate Landscape Rock</h2><p>Enter length, width, and depth in the gravel calculator. Select rock to estimate volume, weight, and overage.</p><p><a class="button button-primary" href="../gravel-calculator/">Open the Gravel and Rock Calculator</a></p></section>
+<section class="content-section"><h2>Rock Coverage by Depth</h2><div class="table-wrap"><table><thead><tr><th>Depth</th><th>Coverage per cubic yard</th><th>Typical use</th></tr></thead><tbody><tr><td>2 inches</td><td>162 sq ft</td><td>Light decorative coverage</td></tr><tr><td>3 inches</td><td>108 sq ft</td><td>Landscape beds and borders</td></tr><tr><td>4 inches</td><td>81 sq ft</td><td>Heavier beds and pathways</td></tr><tr><td>6 inches</td><td>54 sq ft</td><td>Drainage and structural base</td></tr></tbody></table></div></section>
+<section class="content-section"><h2>Before Ordering Rock</h2><ul><li>Confirm the stone type and its approximate weight per cubic yard.</li><li>Measure depth after edging and base preparation are complete.</li><li>Ask whether the supplier sells by cubic yard, ton, or both.</li><li>Check delivery access and minimum order requirements.</li></ul></section>
+<section class="content-section"><h2>FAQ</h2><?php foreach ($faqs as $faq): ?><div class="faq-item"><h3><button class="faq-question" type="button" aria-expanded="false"><?= htmlspecialchars($faq[0], ENT_QUOTES, 'UTF-8') ?><span>+</span></button></h3><div class="faq-answer"><p><?= htmlspecialchars($faq[1], ENT_QUOTES, 'UTF-8') ?></p></div></div><?php endforeach; ?></section>
+<section class="content-section"><h2>Related Rock Tools</h2><div class="link-grid"><a href="../gravel-calculator/">Gravel calculator</a><a href="../gravel-to-tons-calculator/">Gravel to tons calculator</a><a href="../how-to-calculate-cubic-yards/">How to calculate cubic yards</a></div></section>
+<?php include __DIR__ . '/../includes/footer.php'; ?>

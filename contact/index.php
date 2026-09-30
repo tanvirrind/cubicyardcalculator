@@ -1,17 +1,29 @@
 <?php
+session_start();
+$csrf_token = $_SESSION['contact_csrf'] ??= bin2hex(random_bytes(32));
 $contact_status = null;
+$form_name = '';
+$form_email = '';
+$form_message = '';
 if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
+  $submitted_token = (string) ($_POST['csrf_token'] ?? '');
   $hp = trim($_POST['company'] ?? '');
-  $name = trim($_POST['name'] ?? '');
-  $email = trim($_POST['email'] ?? '');
-  $message = trim($_POST['message'] ?? '');
-  if ($hp !== '') {
+  $name = trim((string) ($_POST['name'] ?? ''));
+  $email = trim((string) ($_POST['email'] ?? ''));
+  $message = trim((string) ($_POST['message'] ?? ''));
+  $form_name = $name;
+  $form_email = $email;
+  $form_message = $message;
+  if (!hash_equals($csrf_token, $submitted_token)) {
+    $contact_status = 'error';
+  } elseif ($hp !== '') {
     $contact_status = 'sent';
-  } elseif ($name === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  } elseif ($name === '' || $message === '' || strlen($name) > 120 || strlen($email) > 254 || strlen($message) > 5000 || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $contact_status = 'error';
   } else {
     $to = 'info@cubicyardcalculator.site';
-    $subject = 'Cubic Yard Calculator contact: ' . mb_substr($name, 0, 80);
+    $safe_subject_name = str_replace(["\r", "\n"], '', mb_substr($name, 0, 80));
+    $subject = 'Cubic Yard Calculator contact: ' . $safe_subject_name;
     $body = "Name: $name\nEmail: $email\n\n$message";
     $headers = 'From: noreply@cubicyardcalculator.site' . "\r\n" .
                'Reply-To: ' . str_replace(["\r", "\n"], '', $email);
@@ -45,11 +57,12 @@ include __DIR__ . '/../includes/header.php';
       <p class="form-error" role="alert">The message could not be sent right now. Please email <a href="mailto:info@cubicyardcalculator.site">info@cubicyardcalculator.site</a> directly.</p>
     <?php endif; ?>
     <form method="post" action="<?= htmlspecialchars($_SERVER['REQUEST_URI'] ?? '/contact/', ENT_QUOTES, 'UTF-8') ?>">
+      <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token, ENT_QUOTES, 'UTF-8') ?>">
       <div class="form-grid">
-        <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" required autocomplete="name"></div>
-        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" required maxlength="120" autocomplete="name" value="<?= htmlspecialchars($form_name, ENT_QUOTES, 'UTF-8') ?>"></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required maxlength="254" autocomplete="email" value="<?= htmlspecialchars($form_email, ENT_QUOTES, 'UTF-8') ?>"></div>
         <div class="field" aria-hidden="true" style="position:absolute;left:-9999px"><label for="company">Company</label><input id="company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
-        <div class="field full"><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
+        <div class="field full"><label for="message">Message</label><textarea id="message" name="message" required maxlength="5000"><?= htmlspecialchars($form_message, ENT_QUOTES, 'UTF-8') ?></textarea></div>
         <div class="button-row"><button class="button-primary" type="submit">Send Message</button><button class="button-secondary" type="reset">Reset</button></div>
       </div>
     </form>

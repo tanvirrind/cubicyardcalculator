@@ -23,8 +23,8 @@ $faqs = [
 $schemaFaqs = array_map(fn($faq) => ['@type' => 'Question', 'name' => $faq[0], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq[1]]], $faqs);
 $page = [
   'root' => '',
-  'title' => 'Cubic Yard Calculator: Free Tool for Concrete, Gravel, Mulch',
-  'description' => 'Calculate cubic yards instantly for concrete, gravel, mulch, dirt, sand and rock. Get volume, weight and cost free.',
+  'title' => 'Cubic Yard Calculator and Yardage Estimator',
+  'description' => 'Calculate cubic yards for concrete, gravel, mulch, dirt, sand and rock. Get volume, weight, cost and overage with this free yardage calculator.',
   'canonical' => 'https://cubicyardcalculator.site/',
   'schema' => ['@context' => 'https://schema.org', '@graph' => [
     ['@type' => 'WebApplication', 'name' => 'Cubic Yard Calculator', 'url' => 'https://cubicyardcalculator.site/', 'applicationCategory' => 'CalculatorApplication', 'operatingSystem' => 'Any', 'offers' => ['@type' => 'Offer', 'price' => '0', 'priceCurrency' => 'USD']],
@@ -120,6 +120,20 @@ include __DIR__ . '/includes/header.php';
   </ol>
 </section>
 
+<section class="content-section" id="conversions">
+  <h2>Popular Yard and Volume Conversions</h2>
+  <p>Use these guides when you need to convert feet, square feet, cubic feet, yards, or cubic yards before ordering material.</p>
+  <div class="link-grid">
+    <a href="how-many-feet-in-a-yard/"><strong>How Many Feet in a Yard?</strong><span>Convert yards to feet and inches.</span></a>
+    <a href="how-many-cubic-feet-in-a-cubic-yard/"><strong>Cubic Feet in a Cubic Yard</strong><span>Understand the 27-cubic-foot conversion.</span></a>
+    <a href="cubic-feet-to-cubic-yards-calculator/"><strong>Cubic Feet to Cubic Yards</strong><span>Convert volume in either direction.</span></a>
+    <a href="square-yard-calculator/"><strong>Square Yard Calculator</strong><span>Convert area from square feet to square yards.</span></a>
+    <a href="how-to-calculate-cubic-yards/"><strong>How to Calculate Cubic Yards</strong><span>Follow the formula with worked examples.</span></a>
+    <a href="cubic-yard-coverage/"><strong>Cubic Yard Coverage</strong><span>See how much area one yard covers by depth.</span></a>
+    <a href="cubic-yard-cost/"><strong>Cubic Yard Cost</strong><span>Compare supplier quotes and delivery costs.</span></a>
+  </div>
+</section>
+
 <section class="content-section cube-wrap" id="what-is-a-cubic-yard">
   <svg viewBox="0 0 220 180" role="img" aria-label="A cube showing one cubic yard as 3 feet by 3 feet by 3 feet">
     <polygon points="55,55 125,20 195,55 125,90" fill="#f1f8e9" stroke="#2e7d32" stroke-width="3"/>
@@ -163,6 +177,10 @@ include __DIR__ . '/includes/header.php';
     <a href="mulch-calculator/"><strong>Landscaping</strong><span>Garden beds, borders, tree rings, and refresh layers.</span></a>
     <a href="gravel-calculator/"><strong>Gravel and Stone</strong><span>Driveways, paths, drainage areas, and decorative rock.</span></a>
     <a href="dirt-calculator/"><strong>Soil and Fill</strong><span>Topsoil, fill dirt, raised beds, grading, and backfill.</span></a>
+    <a href="fill-dirt-calculator/"><strong>Fill Dirt</strong><span>Estimate material for grading, leveling, and backfill.</span></a>
+    <a href="landscape-rock-calculator/"><strong>Landscape Rock</strong><span>Plan decorative stone and drainage rock coverage.</span></a>
+    <a href="concrete-bag-calculator/"><strong>Concrete Bags</strong><span>Estimate 60-pound and 80-pound bag quantities.</span></a>
+    <a href="mulch-bag-calculator/"><strong>Mulch Bags</strong><span>Convert mulch volume into two-cubic-foot bags.</span></a>
   </div>
 </section>
 

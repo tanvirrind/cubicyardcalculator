@@ -34,7 +34,16 @@
 
   function setError(form, name, message) {
     const box = form.querySelector(`[data-error-for="${name}"]`);
-    if (box) box.textContent = message || '';
+    const input = form.querySelector(`[name="${name}"]`);
+    if (box) {
+      if (!box.id) box.id = `error-${name}`;
+      box.textContent = message || '';
+      box.setAttribute('role', 'alert');
+    }
+    if (input) {
+      if (box) input.setAttribute('aria-describedby', box.id);
+      input.setAttribute('aria-invalid', message ? 'true' : 'false');
+    }
   }
 
   function validatePositive(form, input) {
@@ -78,6 +87,7 @@
   function showResults(form, values) {
     const result = form.querySelector('.results');
     if (!result) return;
+    result.setAttribute('aria-live', 'polite');
     Object.keys(values).forEach((key) => {
       result.querySelectorAll(`[data-result="${key}"]`).forEach((node) => {
         node.textContent = values[key];
@@ -107,8 +117,9 @@
     const rawYards = rawFeet / 27;
     const yards = Number(round(rawYards, 2));
     const material = materialKey(form);
-    const lbs = Math.round(yards * (weights[material] || weights.concrete));
-    const cost = price && price.value ? `$${round(yards * Number(price.value), 2)}` : 'Add a price to estimate cost';
+    const poundsPerYard = weights[material] || weights.concrete;
+    const lbs = Math.round(rawYards * poundsPerYard);
+    const cost = price && price.value ? `$${round(rawYards * Number(price.value), 2)}` : 'Add a price to estimate cost';
     const copyText = `${round(yards, 2)} cubic yards of ${materialLabel(material)} for ${length.value}x${width.value}x${depth.value}`;
 
     const values = {
@@ -118,14 +129,14 @@
       pounds: numberWithCommas(lbs),
       tons: round(lbs / 2000, 2),
       cost,
-      overage: round(yards * 1.10, 2),
+      overage: round(rawYards * 1.10, 2),
       material: materialLabel(material),
       copy: copyText,
-      bags60: Math.ceil(yards * 60).toLocaleString('en-US'),
-      bags80: Math.ceil(yards * 45).toLocaleString('en-US'),
-      bags2cf: Math.ceil((yards * 27) / 2).toLocaleString('en-US'),
+      bags60: Math.ceil(rawYards * 60).toLocaleString('en-US'),
+      bags80: Math.ceil(rawYards * 45).toLocaleString('en-US'),
+      bags2cf: Math.ceil((rawYards * 27) / 2).toLocaleString('en-US'),
       coverage: round((lFeet * wFeet), 2),
-      trucks: round(yards / 2, 2)
+      trucks: round(rawYards / 2, 2)
     };
     showResults(form, values);
   }
@@ -140,14 +151,14 @@
     const rawYards = rawFeet / 27;
     const yards = Number(round(rawYards, 2));
     const material = materialKey(form);
-    const lbs = Math.round(yards * (weights[material] || weights.concrete));
+    const lbs = Math.round(rawYards * (weights[material] || weights.concrete));
     showResults(form, {
       yards: round(yards, 2),
       feet: round(rawFeet, 2),
       meters: round(rawYards * 0.764555, 2),
       pounds: numberWithCommas(lbs),
       tons: round(lbs / 2000, 2),
-      overage: round(yards * 1.10, 2),
+      overage: round(rawYards * 1.10, 2),
       material: materialLabel(material)
     });
   }
@@ -165,6 +176,36 @@
     showResults(form, {
       converted: mode === 'tons' ? `${round(yards, 2)} cubic yards` : `${round(tons, 2)} tons`,
       confirmation: `${round(yards, 2)} cubic yards of ${materialLabel(material)} weighs about ${round(tons, 2)} tons.`
+    });
+  }
+
+  function calculateCubicConversion(form) {
+    const amount = form.querySelector('[name="amount"]');
+    if (!validatePositive(form, amount)) return;
+    const mode = form.querySelector('[name="convert_mode"]:checked').value;
+    const input = Number(amount.value);
+    const cubicFeet = mode === 'feet' ? input : input * 27;
+    const cubicYards = mode === 'feet' ? input / 27 : input;
+    showResults(form, {
+      converted: mode === 'feet' ? `${round(cubicYards, 2)} cubic yards` : `${round(cubicFeet, 2)} cubic feet`,
+      explanation: mode === 'feet'
+        ? `${round(input, 2)} cubic feet ÷ 27 = ${round(cubicYards, 2)} cubic yards.`
+        : `${round(input, 2)} cubic yards × 27 = ${round(cubicFeet, 2)} cubic feet.`
+    });
+  }
+
+  function calculateSquareYards(form) {
+    const length = form.querySelector('[name="length"]');
+    const width = form.querySelector('[name="width"]');
+    const valid = [length, width].every((input) => validatePositive(form, input));
+    if (!valid) return;
+    const lFeet = convertToFeet(length.value, form.querySelector('[name="length_unit"]').value);
+    const wFeet = convertToFeet(width.value, form.querySelector('[name="width_unit"]').value);
+    const squareFeet = lFeet * wFeet;
+    showResults(form, {
+      squareYards: round(squareFeet / 9, 2),
+      squareFeet: round(squareFeet, 2),
+      explanation: `${round(squareFeet, 2)} square feet ÷ 9 = ${round(squareFeet / 9, 2)} square yards.`
     });
   }
 
@@ -213,6 +254,8 @@
     event.preventDefault();
     if (form.dataset.calculator === 'tons') calculateTons(form);
     else if (form.dataset.calculator === 'square-feet') calculateSquareFeet(form);
+    else if (form.dataset.calculator === 'cubic-conversion') calculateCubicConversion(form);
+    else if (form.dataset.calculator === 'square-yards') calculateSquareYards(form);
     else calculateStandard(form);
   });
 

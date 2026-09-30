@@ -11,6 +11,9 @@
           <a href="<?= $root ?>#how-to-use">How to Use</a>
           <a href="<?= $root ?>#materials">Materials</a>
           <a href="<?= $root ?>#faq">FAQ</a>
+          <a href="<?= $root ?>how-many-feet-in-a-yard/">Feet in a Yard</a>
+          <a href="<?= $root ?>how-many-cubic-feet-in-a-cubic-yard/">Cubic Feet in a Yard</a>
+          <a href="<?= $root ?>how-to-calculate-cubic-yards/">How to Calculate Cubic Yards</a>
           <a href="<?= $root ?>about/">About</a>
         </nav>
       </section>
@@ -24,6 +27,15 @@
           <a href="<?= $root ?>tons-to-cubic-yards-calculator/">Tons to Cubic Yards Calculator</a>
           <a href="<?= $root ?>square-feet-to-cubic-yards-calculator/">Square Feet to Cubic Yards Calculator</a>
           <a href="<?= $root ?>sand-calculator/">Sand Calculator</a>
+          <a href="<?= $root ?>cubic-feet-to-cubic-yards-calculator/">Cubic Feet to Cubic Yards</a>
+          <a href="<?= $root ?>square-yard-calculator/">Square Yard Calculator</a>
+          <a href="<?= $root ?>fill-dirt-calculator/">Fill Dirt Calculator</a>
+          <a href="<?= $root ?>landscape-rock-calculator/">Landscape Rock Calculator</a>
+          <a href="<?= $root ?>gravel-to-tons-calculator/">Gravel to Tons</a>
+          <a href="<?= $root ?>concrete-bag-calculator/">Concrete Bag Calculator</a>
+          <a href="<?= $root ?>mulch-bag-calculator/">Mulch Bag Calculator</a>
+          <a href="<?= $root ?>cubic-yard-coverage/">Cubic Yard Coverage</a>
+          <a href="<?= $root ?>cubic-yard-cost/">Cubic Yard Cost Guide</a>
         </nav>
       </section>
       <section>

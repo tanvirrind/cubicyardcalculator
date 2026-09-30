@@ -59,8 +59,10 @@ if (!empty($page['breadcrumbs']) && isset($schema['@graph']) && is_array($schema
         <a href="<?= $root ?>mulch-calculator/">Mulch</a>
         <a href="<?= $root ?>dirt-calculator/">Dirt &amp; Soil</a>
         <a href="<?= $root ?>sand-calculator/">Sand</a>
-        <a href="<?= $root ?>tons-to-cubic-yards-calculator/">Tons to Yd&sup3;</a>
-        <a href="<?= $root ?>square-feet-to-cubic-yards-calculator/">Sq Ft to Yd&sup3;</a>
+        <a href="<?= $root ?>tons-to-cubic-yards-calculator/">Tons &rarr; Yd&sup3;</a>
+        <a href="<?= $root ?>square-feet-to-cubic-yards-calculator/">Sq Ft &rarr; Yd&sup3;</a>
+        <a href="<?= $root ?>cubic-feet-to-cubic-yards-calculator/">Cu Ft &rarr; Yd&sup3;</a>
+        <a href="<?= $root ?>how-to-calculate-cubic-yards/">Guide</a>
         <a href="<?= $root ?>contact/">Contact</a>
       </div>
     </nav>
