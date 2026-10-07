@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /includes/
-Sitemap: https://cubicyardcalculator.site/sitemap.xml
